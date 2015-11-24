@@ -1,0 +1,56 @@
+<ion-view view-title="profile">
+    <ion-nav-bar class="bar-positive copperfont textcenter">
+        <ion-nav-buttons side="left">
+            <button menu-toggle="left" class="button icon ion-navicon noborder"></button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <button class="button icon ion-home noborder" ng-click="gohome()"></button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+
+        <div class="textcenter lightblackcolor profile" style="margin: 0px !important;">
+            <img src="img/profilegrey.png">
+            <div ng-if="user != null">
+                <h1>{{user.name}}</h1>
+                <p>{{user.email}}
+                    <br> {{user.contact}}</p>
+            </div>
+            <div ng-if="user == null">
+                <!--LOGIN AND SIGN UP BUTTON-->
+                <!--<button ng-click="login()">LOGIN</button>-->
+                <div class="textcenter">
+                <button class="button button-positive profilebutton bluebgcolor" ng-click="login()">LOGIN</button>
+                <button class="button button-positive profilebutton redbgcolor" ng-click="signup()">SIGN UP</button>
+                </div>
+            </div>
+            <div>
+                <p style="margin: 10%;"  ng-if="user == null">
+                    Sign-in to bookmark articles <br> and to post comments.
+                </p>
+            </div>
+        </div>
+
+
+        <ion-list ng-if="user != null">
+            <div class="list lightblackcolor ">
+                <a class="item item-icon-left textcenter" href="#/app/category/bookmark">View Bookmarked Articles
+                    <i class="icon ion-bookmark redcolor"></i>
+                </a>
+                <a class="item item-icon-left textcenter" href="#/app/forgot">Change Password
+                    <i class="icon ion-edit redcolor"></i>
+                </a>
+                <a class="item item-icon-left textcenter" ng-click="logout()"> Logout
+                    <i class="icon ion-log-out redcolor"></i>
+                </a>
+            </div>
+
+
+
+
+        </ion-list>
+
+
+
+    </ion-content>
+</ion-view>

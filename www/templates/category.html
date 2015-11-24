@@ -1,0 +1,54 @@
+<ion-view view-title="news">
+    <ion-nav-bar class="bar-positive copperfont textcenter">
+        <ion-nav-buttons side="left">
+            <button menu-toggle="left" class="button icon ion-navicon noborder"></button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <button class="button icon ion-home noborder" ng-click="gohome()"></button>
+            <!--<button ng-if="catid == 'blog'" class="button icon ion-ios-compose-outline noborder" ng-click="create()"></button>-->
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+        <div class="redbgcolor cattitle">
+            <h4 class="redbgcolor copperfont cattitletext">{{categoryname.name}}</h4>
+        </div>
+        <div class="webkittextcenter">
+            <button class="button button-block button-positive bluebgcolor copperfont" style="width:90%" ng-click="create()" ng-if="catid == 'blog'">
+                Create your Blog
+            </button>
+        </div>
+        <ion-list>
+            <div ng-repeat="news in categorynews">
+                <ion-item class="item-text-wrap" ng-if="$index==0" ng-click="getarticle(news.news_id)" on-hold="holdpopup(news.news_id)">
+                    <div class="headnewsdiv">
+                        <img src="{{news.photo | imagepath}}" width="100%" err-src="img/noimage_article.png" ng-if="catid != 'bookmark'">
+                        <img src="{{news.photo}}" width="100%" err-src="img/noimage_article.png" ng-if="catid == 'bookmark'">
+                    </div>
+                    <div class="headnewsheadline darkblackcolor">
+                        <h5 class="darkblackcolor headline" ng-class="{gujufont:news.language==2, hindifont:news.language==3}">{{news.shortheadline | capitalize}}</h5>
+                    </div>
+                </ion-item>
+
+                <ion-item class="item-text-wrap" ng-if="$index!=0" ng-click="getarticle(news.news_id)" on-hold="holdpopup(news.news_id)">
+                    <div class="row othernewsheadline">
+                        <div class="col" ng-class="{'col-75': news.photo != '' }">
+                            <div class=" darkblackcolor">
+                                <h5 class="darkblackcolor otherheadline" ng-class="{gujufont:news.language==2, hindifont:news.language==3}">{{news.shortheadline | capitalize}}</h5>
+                            </div>
+                        </div>
+                        <div ng-if="news.photo !=''" class="col col-25" style="overflow: hidden;">
+                            <img src="{{news.photo | imagepath}}" width="100%" err-src="img/noimage_square.png" ng-if="catid != 'bookmark'">
+                            <img src="{{news.photo}}" width="100%" err-src="img/noimage_article.png" ng-if="catid == 'bookmark'">
+                        </div>
+                    </div>
+                </ion-item>
+            </div>
+        </ion-list>
+
+        <div class="darkblackcolor textcenter morenews" ng-click="getmorenews()" ng-if="showmorenewsbutton">Get More News</div>
+        <div class="darkblackcolor textcenter morenews" ng-if="nomorenews">No More News</div>
+        <center>
+            <ion-spinner icon="ios" ng-if="spinner"></ion-spinner>
+        </center>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,77 @@
+<ion-view view-title="full article">
+    <ion-nav-bar class="bar-positive copperfont textcenter">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+        <ion-nav-buttons side="left">
+            <button menu-toggle="left" class="button icon ion-navicon noborder"></button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <span class="ion-bookmark noborder bookmarkicon" ng-click="savenews()"  ng-if="!bookmark"></span>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+        <div>
+            <img src="{{article.photo | imagepath}}" width="100%" err-src="img/noimage_article.png" ng-if="!bookmark">
+            <img src="{{article.photo}}" width="100%" err-src="img/noimage_article.png" ng-if="bookmark">
+            <div class="datediv">
+                <span class="ion-ios-clock-outline clock"></span>
+                <p class="darkblackvolor datetext">{{article.timeStamp | timestampToISO | date:'dd MMMM, yyyy'}}</p>
+            </div>
+        </div>
+        <div class=" darkblackcolor fullarticleheadline">
+            <h5 class="darkblackcolor headline " ng-class="{gujufont:article.language==2,microsfont:article.language==1, hindifont:news.language==3}">{{article.headLine | capitalize}}</h5>
+        </div>
+        <div class="lightblackcolor microsfont fullarticletext">
+            <pre class="fullarticletextstyle" ng-class="{gujufont:article.language==2, hindifont:news.language==3}">  {{article.artical}}</pre>
+            <br>
+            <h5 class="darkblackcolor" style="margin-top: -10px;">By : {{article.authorname}}</h5>
+            <u class="redcolor" ng-click="opengallery(article.id)" ng-if="article.count_image>0"><h3 class="redcolor" ng-if="!bookmark">View More Images [{{article.count_image}}]</h3></u>
+        </div>
+        <div ng-if="logedin && !bookmark">
+            <div class="row">
+                <div class="col">
+                    <textarea class="commenttextarea" placeholder="Post a comment" ng-model="userpost.comment" style="height: 92px;"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-67"></div>
+                <div class="col col-33 textcenter">
+                    <button class="postbutton copperfont button button-positive" ng-click="sendcomment()">POST</button>
+                </div>
+            </div>
+        </div>
+        <div ng-if="!logedin && !bookmark">
+            <div class="row">
+                <div class="col">
+                    <textarea class="commenttextarea" placeholder="Login to leave a comment" disabled></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-67"></div>
+                <div class="col col-33 textcenter">
+                    <a href="#/app/settings">
+                        <button class="postbutton copperfont button button-positive">login</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="commentdiv" ng-repeat="comment in article.comments" ng-if="!bookmark">
+
+            <div class="row">
+                <div class="col">
+                    <h4 class="bluecolor">{{comment.name}}</h4>
+                    <div class="commentarrow"></div>
+                    <div class="commentbox darkblackcolor microsfont">
+                        <p>{{comment.comment}}</p>
+
+                    </div>
+                    <p class="commentdate">{{comment.date}}</p>
+                </div>
+
+            </div>
+        </div>
+        <hr>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,31 @@
+<ion-view view-title="login">
+    <ion-nav-bar class="bar-positive copperfont textcenter">
+        <ion-nav-buttons side="left">
+            <button menu-toggle="left" class="button icon ion-navicon noborder"></button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <button class="button icon ion-home noborder" ng-click="gohome()"></button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+        <!--<button ng-click="login()">LOGIN</button>-->
+
+        <div class="list">
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Email</span>
+                <input type="text" ng-model="logindata.email" placeholder="Email address">
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Password</span>
+                <input type="password" ng-model="logindata.password" placeholder="Password">
+            </label>
+        </div>
+        <p class="textcenter redcolor">{{errormessage}}</p>
+
+        <div class="textcenter">
+            <button class="button button-positive signupbutton bluebgcolor" ng-click="login()">LOGIN</button>
+        </div>
+
+
+    </ion-content>
+</ion-view>

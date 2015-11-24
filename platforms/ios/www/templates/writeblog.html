@@ -1,0 +1,51 @@
+<ion-view view-title="create blog">
+    <ion-nav-bar class="bar-positive copperfont textcenter">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+        <ion-nav-buttons side="left">
+            <button menu-toggle="left" class="button icon ion-navicon noborder"></button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <button class="button icon ion-home noborder" ng-click="gohome()"></button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+
+        <form>
+            <div class="list">
+                <div class="blogimagetopclass">
+                    <img id="myImage" src="" class="blogimg" />
+                    <div class="blogimageicondiv" ng-if="!imageuploaded" ng-click="uploadimage()">
+                        <i class="ion-camera blogimageicon"></i>
+                    </div>
+                    <div class="retakephotodiv" ng-click="uploadimage()" ng-if="imageuploaded">
+                        <i class="ion-camera" style="vertical-align: -webkit-baseline-middle;"></i>
+                    </div>
+                </div>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Language
+                    </div>
+                    <select ng-model="blogdata.language">
+                        <option value="1" selected >English</option>
+                        <option value="3">Hindi</option>
+                        <option value="2">Gujurati</option>
+                    </select>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Headline</span>
+                    <input type="text" placeholder="headline" ng-model="blogdata.headline" ng-class="{gujufont:blogdata.language==2,microsfont:blogdata.language==1, hindifont:blogdata.language==3}">
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Article</span>
+                    <textarea rows="8" placeholder="article" ng-model="blogdata.article" ng-class="{gujufont:blogdata.language==2,microsfont:blogdata.language==1, hindifont:blogdata.language==3}"></textarea>
+                </label>
+                <button class="button button-block button-positive" ng-click="createblog()">
+                    Post
+                </button>
+            </div>
+
+
+        </form>
+    </ion-content>
+</ion-view>

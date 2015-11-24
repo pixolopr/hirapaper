@@ -1,0 +1,50 @@
+<ion-view view-title="news">
+    <ion-nav-bar class="bar-positive copperfont textcenter">
+        <ion-nav-buttons side="left">
+            <button menu-toggle="left" class="button icon ion-navicon noborder"></button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+        <div ng-if="errormessage != ''" bluecolor class="toperrormessagediv bluecolor">
+            <p>{{errormessage}}</p>
+        </div>
+        <ion-list>
+            <div ng-repeat="category in homenews">
+                <div ng-repeat="news in category.news">
+                    <ion-item class="item-text-wrap" ng-click="getarticle(news.newsid)" ng-if="$index==0">
+                        <div id="bignews" class="headnewsdiv">
+                            <div class="categorystyle"></div>
+                            <div class="categorynamediv copperfont redbgcolor">{{category.category}}</div>
+
+                            <img src="{{news.photo | imagepath}}" width="100%" class="centercrop"  err-src="img/noimage_article.png">
+
+
+                        </div>
+                        <div class="headnewsheadline darkblackcolor">
+                            <!-- <h5 class="darkblackcolor headline gujufont " ng-if="news.language==2" >{{news.shortheadline}}</h5>-->
+                            <h5 class="darkblackcolor headline  " ng-class="{gujufont:news.language==2, hindifont:news.language==3}">{{news.shortheadline | capitalize}}</h5>
+                        </div>
+                    </ion-item>
+
+                    <ion-item class="item-text-wrap" ng-click="getarticle(news.newsid)" ng-if="$index!=0">
+                        <div class="row othernewsheadline">
+                            <div class="col" ng-class="{'col-75': news.photo != '' }">
+                                <div class=" darkblackcolor">
+                                    <!--                                <h5 class="darkblackcolor otherheadline gujufont" ng-if="news.language==2">{{news.shortheadline}}</h5>-->
+                                    <h5 class="darkblackcolor otherheadline" ng-class="{gujufont:news.language==2, hindifont:news.language==3}">{{news.shortheadline | capitalize}}</h5>
+                                </div>
+                            </div>
+                            <div ng-if="news.photo !=''" class="col col-25" style="overflow: hidden;">
+                                <img src="{{news.photo | imagepath}}" width="100%" err-src="img/noimage_square.png">
+                            </div>
+                        </div>
+
+                    </ion-item>
+                </div>
+            </div>
+
+        </ion-list>
+        <ion-refresher pulling-text="Pull to refresh..." on-refresh="dorefresh()">
+        </ion-refresher>
+    </ion-content>
+</ion-view>

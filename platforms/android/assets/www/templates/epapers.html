@@ -1,0 +1,19 @@
+<ion-view view-title="e-papers">
+    <ion-nav-bar class="bar-positive copperfont">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+        <ion-nav-buttons side="left">
+            <button menu-toggle="left" class="button icon ion-navicon noborder"></button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <button class="button icon ion-home noborder" ng-click="gohome()"></button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+        <div class="list">
+            <div ng-bind-html="paperhtml">
+
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

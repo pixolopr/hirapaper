@@ -1,0 +1,48 @@
+<ion-view view-title="sign up">
+    <ion-nav-bar class="bar-positive copperfont textcenter">
+        <ion-nav-buttons side="left">
+            <button menu-toggle="left" class="button icon ion-navicon noborder"></button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <button class="button icon ion-home noborder" ng-click="gohome()"></button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+
+        <!--<button ng-click="signup()">LOGIN</button>-->
+        <form name="signupform" ng-submit="signup()">
+            <div class="list">
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">First Name</span>
+                    <input type="text" ng-focus="clearerror()" ng-model="signupdata.name" placeholder="First Name">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Last Name</span>
+                    <input type="text" ng-focus="clearerror()" ng-model="signupdata.lastname" placeholder="Last Name">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Contact Number</span>
+                    <input type="tel" ng-focus="clearerror()" ng-model="signupdata.contact" placeholder="contact">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Email</span>
+                    <input type="email" ng-focus="clearerror()" ng-blur="validate()" name="emailaddress" ng-model="signupdata.email" placeholder="Email address">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Password</span>
+                    <input type="password" ng-focus="clearerror()" ng-model="signupdata.password" placeholder="Password">
+                </label>
+            </div>
+            <div class="textcenter redcolor" ng-messages="signupform.emailaddress.$error" ng-messages-multiple>
+                <div ng-message="email">Invalid Email</div>
+            </div>
+            <p class="textcenter redcolor">{{errormessage}}</p>
+            <div class="textcenter">
+                <button class="button button-positive signupbutton bluebgcolor" ng-click="signup()" ng-disabled="signupform.emailaddress.$dirty && signupform.emailaddress.$invalid && errormessage != ''">Create Account</button>
+            </div>
+        </form>
+
+
+    </ion-content>
+
+</ion-view>

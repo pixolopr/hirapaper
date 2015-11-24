@@ -1,0 +1,92 @@
+<ion-side-menus enable-menu-with-back-views="true">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-assertive">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left">
+
+        <ion-content class="redbgcolor">
+            <!--
+            <div class="row">
+                <div class="col col-10"></div>
+                <div class="col col-80">
+                    <div class="menuimagediv">
+                        <img src="img/hiramanekimage.png" class="menuimage">
+                    </div>
+                </div>
+            </div>
+-->
+            <div class="row menuimagediv">
+                <div class="knowusbuttondiv">
+                    <button class="button button-small button-assertive  menu_btn" ng-click="gotoknowus()" menu-close>
+                        Know us
+                    </button>
+                </div>
+            </div>
+
+
+
+
+            <div>
+
+
+                <ion-list class="redbgcolor copperfont">
+                    <ion-item menu-close ng-click="gohome()" class="redbgcolor">
+                        ALL
+                    </ion-item>
+                </ion-list>
+                <ion-list class="redbgcolor copperfont" ng-if="categorydata.length > 0">
+                    <ion-item menu-close ng-click="getcategory(category.id)" ng-repeat="category in categorydata" class="redbgcolor">
+                        {{category.name}}
+                    </ion-item>
+                </ion-list>
+                <ion-list class="redbgcolor copperfont">
+                    <ion-item menu-close ng-click="gotoblog()" class="redbgcolor">
+                        BLOG
+                    </ion-item>
+                </ion-list>
+
+                <div class="row">
+                    <div class="col col-10"></div>
+                    <div class="col col-33 textcenter">
+                        <a href="#/app/settings" menu-close>
+                            <div class="menubutton1">
+                                <img src="img/profileicon.png" class="buttonimage">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col col-10"></div>
+                    <div class="col col-33 textcenter">
+                        <a href="#/app/epapers" menu-close>
+                            <div class="menubutton1">
+                                <img src="img/newspapericon.png" class="buttonimage">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col col-10"></div>
+                </div>
+                <div class="row">
+                    <div class="col col-10"></div>
+                    <div class="col col-33 textcenter">
+                        Profile
+                    </div>
+                    <div class="col col-10"></div>
+                    <div class="col col-33 textcenter">
+                        E-Papers
+                    </div>
+                    <div class="col col-10"></div>
+                </div>
+            </div>
+
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>
